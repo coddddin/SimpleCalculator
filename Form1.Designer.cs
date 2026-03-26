@@ -102,6 +102,7 @@
             C_btn.TabIndex = 4;
             C_btn.Text = "C";
             C_btn.UseVisualStyleBackColor = false;
+            C_btn.Click += C_btn_Click;
             // 
             // del_btn
             // 
@@ -125,6 +126,7 @@
             div_btn.TabIndex = 6;
             div_btn.Text = "÷";
             div_btn.UseVisualStyleBackColor = false;
+            div_btn.Click += DivButton_Click;
             // 
             // mul_btn
             // 
@@ -137,6 +139,7 @@
             mul_btn.TabIndex = 10;
             mul_btn.Text = "x";
             mul_btn.UseVisualStyleBackColor = false;
+            mul_btn.Click += MulButton_Click;
             // 
             // btn9
             // 

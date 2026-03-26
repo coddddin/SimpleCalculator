@@ -20,8 +20,10 @@ namespace SimpleCalculator
             div_btn.Click += DivButton_Click;
             result_btn.Click += ResultButton_Click;
 
-            // C 버튼 클릭 이벤트 연결 (전체 초기화)
-            C_btn.Click += C_btn_Click;
+            // C / CE / Del 버튼 이벤트 연결
+            C_btn.Click += C_btn_Click;             // 전체 초기화
+            CE_btn.Click += CE_btn_Click;           // 마지막 피연산자 삭제
+            del_btn.Click += DeleteButton_Click;    // 문자(한 글자) 삭제 (Del)
         }
 
         private void calc_Form_Load(object sender, EventArgs e)
@@ -59,28 +61,13 @@ namespace SimpleCalculator
         }
 
         // '+' 버튼 핸들러: state에 연산자 표시하고 첫 번째 숫자 저장
-        private void PlusButton_Click(object sender, EventArgs e)
-        {
-            PrepareOperator("+");
-        }
-
+        private void PlusButton_Click(object sender, EventArgs e) => PrepareOperator("+");
         // '-' 버튼 핸들러
-        private void MinusButton_Click(object sender, EventArgs e)
-        {
-            PrepareOperator("-");
-        }
-
+        private void MinusButton_Click(object sender, EventArgs e) => PrepareOperator("-");
         // 'x' 버튼 핸들러
-        private void MulButton_Click(object sender, EventArgs e)
-        {
-            PrepareOperator("x");
-        }
-
+        private void MulButton_Click(object sender, EventArgs e) => PrepareOperator("x");
         // '÷' 또는 '/' 버튼 핸들러
-        private void DivButton_Click(object sender, EventArgs e)
-        {
-            PrepareOperator("÷");
-        }
+        private void DivButton_Click(object sender, EventArgs e) => PrepareOperator("÷");
 
         // 공통: 연산자 준비 및 체인 연산 처리
         private void PrepareOperator(string opSymbol)
@@ -179,6 +166,97 @@ namespace SimpleCalculator
             result_Textbox.Text = string.Empty;
             firstNumber = null;
             awaitingSecond = false;
+        }
+
+        // CE 버튼: 마지막으로 입력된 피연산자(토큰)를 통째로 삭제
+        private void CE_btn_Click(object sender, EventArgs e)
+        {
+            var text = state_Textbox.Text ?? string.Empty;
+
+            // 완료된 식이면 전체 초기화 (간단 처리)
+            if (text.Contains(" = "))
+            {
+                state_Textbox.Text = string.Empty;
+                result_Textbox.Text = string.Empty;
+                firstNumber = null;
+                awaitingSecond = false;
+                return;
+            }
+
+            var tokens = text.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length == 0)
+            {
+                // nothing
+                return;
+            }
+
+            if (tokens.Length == 1)
+            {
+                // 유일한 토큰(피연산자) 전체 삭제
+                state_Textbox.Text = string.Empty;
+                awaitingSecond = false;
+                return;
+            }
+
+            // 마지막 토큰이 숫자이면 그 숫자를 제거 (피연산자 통째로 삭제 -> 남은 문자열 끝은 연산자 + 공백)
+            if (double.TryParse(tokens[^1], out _))
+            {
+                int lastSpace = text.LastIndexOf(' ');
+                if (lastSpace >= 0)
+                {
+                    // Keep up to the space after operator (so "1 + 234" -> "1 + ")
+                    state_Textbox.Text = text.Substring(0, lastSpace + 1);
+                    // 상태: 연산자 뒤 대기 중
+                    awaitingSecond = true;
+                }
+                else
+                {
+                    state_Textbox.Text = string.Empty;
+                    awaitingSecond = false;
+                }
+            }
+            else
+            {
+                // 마지막 토큰이 숫자가 아니면(예: 연산자만 남아있는 경우) 연산자 제거
+                int lastSpace = text.LastIndexOf(' ');
+                if (lastSpace >= 0)
+                    state_Textbox.Text = text.Substring(0, lastSpace).TrimEnd();
+            }
+        }
+
+        // Del 버튼: 마지막 입력된 글자(숫자 한 자리) 삭제
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            var text = state_Textbox.Text ?? string.Empty;
+
+            if (text.Contains(" = "))
+            {
+                // 결과가 있는 상태에서는 아무 동작하지 않음(원하면 전체 초기화로 변경 가능)
+                return;
+            }
+
+            if (string.IsNullOrEmpty(text))
+                return;
+
+            // 마지막 문자가 숫자(또는 소수점)일 때만 한 글자 삭제
+            char last = text[^1];
+            if (char.IsDigit(last) || last == '.')
+            {
+                state_Textbox.Text = text.Substring(0, text.Length - 1);
+                // 만약 삭제로 인해 피연산자 부분이 완전히 없어지면 awaitingSecond 상태는 유지(연산자 뒤) 또는 복원
+                // 간단히: if now ends with operator+space, keep awaitingSecond true; else set false when no operator
+                var trimmed = state_Textbox.Text.TrimEnd();
+                var tokens = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (tokens.Length >= 2 && (tokens[^1] == "+" || tokens[^1] == "-" || tokens[^1] == "x" || tokens[^1] == "÷"))
+                {
+                    awaitingSecond = true;
+                }
+                else if (tokens.Length < 2)
+                {
+                    awaitingSecond = false;
+                }
+            }
+            // else: 마지막 문자가 공백 또는 연산자일 경우 Del은 아무 동작 안 함
         }
 
         private void pandm_btn_Click(object sender, EventArgs e)
