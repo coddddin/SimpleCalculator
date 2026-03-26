@@ -33,7 +33,7 @@
             CE_btn = new Button();
             lblAPPName = new Label();
             C_btn = new Button();
-            button3 = new Button();
+            del_btn = new Button();
             div_btn = new Button();
             mul_btn = new Button();
             btn9 = new Button();
@@ -48,7 +48,7 @@
             btn2 = new Button();
             btn1 = new Button();
             result_btn = new Button();
-            button18 = new Button();
+            decimal_btn = new Button();
             btn0 = new Button();
             pandm_btn = new Button();
             SuspendLayout();
@@ -80,7 +80,6 @@
             CE_btn.TabIndex = 2;
             CE_btn.Text = "CE";
             CE_btn.UseVisualStyleBackColor = false;
-            
             // 
             // lblAPPName
             // 
@@ -103,19 +102,17 @@
             C_btn.TabIndex = 4;
             C_btn.Text = "C";
             C_btn.UseVisualStyleBackColor = false;
-            
             // 
-            // button3
+            // del_btn
             // 
-            button3.BackColor = Color.FromArgb(192, 255, 255);
-            button3.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            button3.Location = new Point(185, 193);
-            button3.Name = "button3";
-            button3.Size = new Size(66, 42);
-            button3.TabIndex = 5;
-            button3.Text = "del";
-            button3.UseVisualStyleBackColor = false;
-            
+            del_btn.BackColor = Color.FromArgb(192, 255, 255);
+            del_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            del_btn.Location = new Point(185, 193);
+            del_btn.Name = "del_btn";
+            del_btn.Size = new Size(66, 42);
+            del_btn.TabIndex = 5;
+            del_btn.Text = "del";
+            del_btn.UseVisualStyleBackColor = false;
             // 
             // div_btn
             // 
@@ -128,7 +125,6 @@
             div_btn.TabIndex = 6;
             div_btn.Text = "÷";
             div_btn.UseVisualStyleBackColor = false;
-            
             // 
             // mul_btn
             // 
@@ -141,7 +137,6 @@
             mul_btn.TabIndex = 10;
             mul_btn.Text = "x";
             mul_btn.UseVisualStyleBackColor = false;
-            
             // 
             // btn9
             // 
@@ -155,7 +150,6 @@
             btn9.Text = "9";
             btn9.UseVisualStyleBackColor = false;
             btn9.Click += NumberButton_Click;
-            
             // 
             // btn8
             // 
@@ -169,7 +163,6 @@
             btn8.Text = "8";
             btn8.UseVisualStyleBackColor = false;
             btn8.Click += NumberButton_Click;
-           
             // 
             // btn7
             // 
@@ -183,7 +176,6 @@
             btn7.Text = "7";
             btn7.UseVisualStyleBackColor = false;
             btn7.Click += NumberButton_Click;
-            
             // 
             // minus_btn
             // 
@@ -197,7 +189,6 @@
             minus_btn.Text = "-";
             minus_btn.UseVisualStyleBackColor = false;
             minus_btn.Click += MinusButton_Click;
-            
             // 
             // btn6
             // 
@@ -211,7 +202,6 @@
             btn6.Text = "6";
             btn6.UseVisualStyleBackColor = false;
             btn6.Click += NumberButton_Click;
-            
             // 
             // btn5
             // 
@@ -225,7 +215,6 @@
             btn5.Text = "5";
             btn5.UseVisualStyleBackColor = false;
             btn5.Click += NumberButton_Click;
-       
             // 
             // btn4
             // 
@@ -239,7 +228,6 @@
             btn4.Text = "4";
             btn4.UseVisualStyleBackColor = false;
             btn4.Click += NumberButton_Click;
-            
             // 
             // plus_btn
             // 
@@ -253,7 +241,6 @@
             plus_btn.Text = "+";
             plus_btn.UseVisualStyleBackColor = false;
             plus_btn.Click += PlusButton_Click;
-            
             // 
             // btn3
             // 
@@ -267,7 +254,6 @@
             btn3.Text = "3";
             btn3.UseVisualStyleBackColor = false;
             btn3.Click += NumberButton_Click;
-            
             // 
             // btn2
             // 
@@ -281,7 +267,6 @@
             btn2.Text = "2";
             btn2.UseVisualStyleBackColor = false;
             btn2.Click += NumberButton_Click;
-            
             // 
             // btn1
             // 
@@ -295,7 +280,6 @@
             btn1.Text = "1";
             btn1.UseVisualStyleBackColor = false;
             btn1.Click += NumberButton_Click;
-            
             // 
             // result_btn
             // 
@@ -308,19 +292,17 @@
             result_btn.Text = "=";
             result_btn.UseVisualStyleBackColor = false;
             result_btn.Click += ResultButton_Click;
-            
             // 
-            // button18
+            // decimal_btn
             // 
-            button18.BackColor = Color.White;
-            button18.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            button18.Location = new Point(185, 357);
-            button18.Name = "button18";
-            button18.Size = new Size(66, 42);
-            button18.TabIndex = 21;
-            button18.Text = ".";
-            button18.UseVisualStyleBackColor = false;
-            
+            decimal_btn.BackColor = Color.White;
+            decimal_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            decimal_btn.Location = new Point(185, 357);
+            decimal_btn.Name = "decimal_btn";
+            decimal_btn.Size = new Size(66, 42);
+            decimal_btn.TabIndex = 21;
+            decimal_btn.Text = ".";
+            decimal_btn.UseVisualStyleBackColor = false;
             // 
             // btn0
             // 
@@ -334,7 +316,6 @@
             btn0.Text = "0";
             btn0.UseVisualStyleBackColor = false;
             btn0.Click += NumberButton_Click;
-            
             // 
             // pandm_btn
             // 
@@ -347,7 +328,6 @@
             pandm_btn.Text = "+/-";
             pandm_btn.UseVisualStyleBackColor = false;
             pandm_btn.Click += pandm_btn_Click;
-            
             // 
             // Form1
             // 
@@ -356,7 +336,7 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(375, 434);
             Controls.Add(result_btn);
-            Controls.Add(button18);
+            Controls.Add(decimal_btn);
             Controls.Add(btn0);
             Controls.Add(pandm_btn);
             Controls.Add(plus_btn);
@@ -372,7 +352,7 @@
             Controls.Add(btn8);
             Controls.Add(btn7);
             Controls.Add(div_btn);
-            Controls.Add(button3);
+            Controls.Add(del_btn);
             Controls.Add(C_btn);
             Controls.Add(lblAPPName);
             Controls.Add(CE_btn);
@@ -393,7 +373,7 @@
         private Button CE_btn;
         private Label lblAPPName;
         private Button C_btn;
-        private Button button3;
+        private Button del_btn;
         private Button div_btn;
         private Button mul_btn;
         private Button btn9;
@@ -408,7 +388,7 @@
         private Button btn2;
         private Button btn1;
         private Button result_btn;
-        private Button button18;
+        private Button decimal_btn;
         private Button btn0;
         private Button pandm_btn;
     }

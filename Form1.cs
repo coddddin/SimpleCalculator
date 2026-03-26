@@ -1,4 +1,3 @@
-
 using System;
 using System.Windows.Forms;
 
@@ -20,6 +19,9 @@ namespace SimpleCalculator
             mul_btn.Click += MulButton_Click;
             div_btn.Click += DivButton_Click;
             result_btn.Click += ResultButton_Click;
+
+            // C 버튼 클릭 이벤트 연결 (전체 초기화)
+            C_btn.Click += C_btn_Click;
         }
 
         private void calc_Form_Load(object sender, EventArgs e)
@@ -168,6 +170,15 @@ namespace SimpleCalculator
             if (double.IsNaN(v)) return "NaN";
             if (Math.Abs(v % 1) < 1e-12) return ((long)v).ToString();
             return v.ToString();
+        }
+
+        // C 버튼: 모든 내용 초기화 (텍스트박스 및 내부 상태)
+        private void C_btn_Click(object sender, EventArgs e)
+        {
+            state_Textbox.Text = string.Empty;
+            result_Textbox.Text = string.Empty;
+            firstNumber = null;
+            awaitingSecond = false;
         }
 
         private void pandm_btn_Click(object sender, EventArgs e)
