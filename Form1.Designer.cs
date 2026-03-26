@@ -71,7 +71,7 @@
             // 
             // CE_btn
             // 
-            CE_btn.BackColor = Color.OldLace;
+            CE_btn.BackColor = Color.FromArgb(192, 255, 255);
             CE_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             CE_btn.ForeColor = Color.Black;
             CE_btn.Location = new Point(51, 193);
@@ -94,7 +94,7 @@
             // 
             // C_btn
             // 
-            C_btn.BackColor = Color.OldLace;
+            C_btn.BackColor = Color.FromArgb(192, 255, 255);
             C_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             C_btn.Location = new Point(119, 193);
             C_btn.Name = "C_btn";
@@ -105,7 +105,7 @@
             // 
             // button3
             // 
-            button3.BackColor = Color.OldLace;
+            button3.BackColor = Color.FromArgb(192, 255, 255);
             button3.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             button3.Location = new Point(185, 193);
             button3.Name = "button3";
@@ -140,7 +140,7 @@
             // 
             // btn9
             // 
-            btn9.BackColor = Color.OldLace;
+            btn9.BackColor = Color.White;
             btn9.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn9.ForeColor = Color.Blue;
             btn9.Location = new Point(185, 234);
@@ -153,7 +153,7 @@
             // 
             // btn8
             // 
-            btn8.BackColor = Color.OldLace;
+            btn8.BackColor = Color.White;
             btn8.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn8.ForeColor = Color.Blue;
             btn8.Location = new Point(119, 234);
@@ -166,7 +166,7 @@
             // 
             // btn7
             // 
-            btn7.BackColor = Color.OldLace;
+            btn7.BackColor = Color.White;
             btn7.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn7.ForeColor = Color.Blue;
             btn7.Location = new Point(51, 234);
@@ -188,10 +188,11 @@
             minus_btn.TabIndex = 14;
             minus_btn.Text = "-";
             minus_btn.UseVisualStyleBackColor = false;
+            minus_btn.Click += MinusButton_Click;
             // 
             // btn6
             // 
-            btn6.BackColor = Color.OldLace;
+            btn6.BackColor = Color.White;
             btn6.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn6.ForeColor = Color.Blue;
             btn6.Location = new Point(185, 275);
@@ -204,7 +205,7 @@
             // 
             // btn5
             // 
-            btn5.BackColor = Color.OldLace;
+            btn5.BackColor = Color.White;
             btn5.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn5.ForeColor = Color.Blue;
             btn5.Location = new Point(119, 275);
@@ -217,7 +218,7 @@
             // 
             // btn4
             // 
-            btn4.BackColor = Color.OldLace;
+            btn4.BackColor = Color.White;
             btn4.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn4.ForeColor = Color.Blue;
             btn4.Location = new Point(51, 275);
@@ -239,10 +240,11 @@
             plus_btn.TabIndex = 18;
             plus_btn.Text = "+";
             plus_btn.UseVisualStyleBackColor = false;
+            plus_btn.Click += PlusButton_Click;
             // 
             // btn3
             // 
-            btn3.BackColor = Color.OldLace;
+            btn3.BackColor = Color.White;
             btn3.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn3.ForeColor = Color.Blue;
             btn3.Location = new Point(185, 316);
@@ -255,7 +257,7 @@
             // 
             // btn2
             // 
-            btn2.BackColor = Color.OldLace;
+            btn2.BackColor = Color.White;
             btn2.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn2.ForeColor = Color.Blue;
             btn2.Location = new Point(119, 316);
@@ -268,7 +270,7 @@
             // 
             // btn1
             // 
-            btn1.BackColor = Color.OldLace;
+            btn1.BackColor = Color.White;
             btn1.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn1.ForeColor = Color.Blue;
             btn1.Location = new Point(51, 316);
@@ -289,10 +291,11 @@
             result_btn.TabIndex = 22;
             result_btn.Text = "=";
             result_btn.UseVisualStyleBackColor = false;
+            result_btn.Click += ResultButton_Click;
             // 
             // button18
             // 
-            button18.BackColor = Color.OldLace;
+            button18.BackColor = Color.White;
             button18.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             button18.Location = new Point(185, 357);
             button18.Name = "button18";
@@ -303,7 +306,7 @@
             // 
             // btn0
             // 
-            btn0.BackColor = Color.OldLace;
+            btn0.BackColor = Color.White;
             btn0.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn0.ForeColor = Color.Blue;
             btn0.Location = new Point(119, 357);
@@ -316,7 +319,7 @@
             // 
             // pandm_btn
             // 
-            pandm_btn.BackColor = Color.OldLace;
+            pandm_btn.BackColor = Color.White;
             pandm_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             pandm_btn.Location = new Point(51, 357);
             pandm_btn.Name = "pandm_btn";
@@ -324,6 +327,7 @@
             pandm_btn.TabIndex = 19;
             pandm_btn.Text = "+/-";
             pandm_btn.UseVisualStyleBackColor = false;
+            pandm_btn.Click += pandm_btn_Click;
             // 
             // Form1
             // 
