@@ -1,3 +1,4 @@
+
 using System;
 using System.Windows.Forms;
 
@@ -6,17 +7,18 @@ namespace SimpleCalculator
     public partial class Form1 : Form
     {
         // 덧셈을 위한 상태 필드 1차과제 완료
-        private int? firstNumber = null;
+        private double? firstNumber = null;
         private bool awaitingSecond = false;
 
         public Form1()
         {
             InitializeComponent();
 
-            // 연산자 및 결과 버튼 이벤트 연결 (더하기만 구현)
+            // 연산자 및 결과 버튼 이벤트 연결
             plus_btn.Click += PlusButton_Click;
-            // 뺄셈 버튼 이벤트 연결 추가
             minus_btn.Click += MinusButton_Click;
+            mul_btn.Click += MulButton_Click;
+            div_btn.Click += DivButton_Click;
             result_btn.Click += ResultButton_Click;
         }
 
@@ -57,48 +59,34 @@ namespace SimpleCalculator
         // '+' 버튼 핸들러: state에 연산자 표시하고 첫 번째 숫자 저장
         private void PlusButton_Click(object sender, EventArgs e)
         {
-            // 이미 결과가 표시된 경우(예: "1 + 2 = 3") 결과를 좌항으로 사용
-            if (state_Textbox.Text.Contains(" = "))
-            {
-                if (int.TryParse(result_Textbox.Text, out int res))
-                {
-                    state_Textbox.Text = res.ToString();
-                    result_Textbox.Text = string.Empty;
-                }
-            }
-
-            var tokens = state_Textbox.Text.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-            // "숫자"만 존재하면 연산자 추가
-            if (tokens.Length == 1 && int.TryParse(tokens[0], out int n))
-            {
-                firstNumber = n;
-                state_Textbox.Text = $"{n} + ";
-                awaitingSecond = true;
-                return;
-            }
-
-            // "숫자 연산자 숫자" 형태면 중간 계산하고 이어서 더하기(체인)
-            if (tokens.Length >= 3 && int.TryParse(tokens[0], out int left) && tokens[1] == "+" && int.TryParse(tokens[2], out int right))
-            {
-                int sum = left + right;
-                result_Textbox.Text = sum.ToString();
-                firstNumber = sum;
-                state_Textbox.Text = $"{sum} + ";
-                awaitingSecond = true;
-                return;
-            }
-
-            // "숫자 연산자" 상태(예: "12 + ")이면 연산자 교체는 필요 없으므로 무시
+            PrepareOperator("+");
         }
 
-        // '-' 버튼 핸들러: state에 연산자 표시하고 첫 번째 숫자 저장 (뺄셈 구현)
+        // '-' 버튼 핸들러
         private void MinusButton_Click(object sender, EventArgs e)
         {
-            // 이미 결과가 표시된 경우(예: "1 + 2 = 3") 결과를 좌항으로 사용
+            PrepareOperator("-");
+        }
+
+        // 'x' 버튼 핸들러
+        private void MulButton_Click(object sender, EventArgs e)
+        {
+            PrepareOperator("x");
+        }
+
+        // '÷' 또는 '/' 버튼 핸들러
+        private void DivButton_Click(object sender, EventArgs e)
+        {
+            PrepareOperator("÷");
+        }
+
+        // 공통: 연산자 준비 및 체인 연산 처리
+        private void PrepareOperator(string opSymbol)
+        {
+            // 이미 결과가 표시된 경우 결과를 좌항으로 사용
             if (state_Textbox.Text.Contains(" = "))
             {
-                if (int.TryParse(result_Textbox.Text, out int res))
+                if (double.TryParse(result_Textbox.Text, out double res))
                 {
                     state_Textbox.Text = res.ToString();
                     result_Textbox.Text = string.Empty;
@@ -108,29 +96,30 @@ namespace SimpleCalculator
             var tokens = state_Textbox.Text.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
             // "숫자"만 존재하면 연산자 추가
-            if (tokens.Length == 1 && int.TryParse(tokens[0], out int n))
+            if (tokens.Length == 1 && double.TryParse(tokens[0], out double n))
             {
                 firstNumber = n;
-                state_Textbox.Text = $"{n} - ";
+                state_Textbox.Text = $"{FormatNumber(n)} {opSymbol} ";
                 awaitingSecond = true;
                 return;
             }
 
-            // "숫자 연산자 숫자" 형태면 중간 계산하고 이어서 빼기(체인)
-            if (tokens.Length >= 3 && int.TryParse(tokens[0], out int left) && tokens[1] == "-" && int.TryParse(tokens[2], out int right))
+            // "숫자 연산자 숫자" 형태면 중간 계산하고 이어서 연산(체인)
+            if (tokens.Length >= 3 && double.TryParse(tokens[0], out double left) && double.TryParse(tokens[2], out double right))
             {
-                int diff = left - right;
-                result_Textbox.Text = diff.ToString();
-                firstNumber = diff;
-                state_Textbox.Text = $"{diff} - ";
+                string currentOp = tokens[1];
+                double intermediate = Compute(left, right, currentOp);
+                result_Textbox.Text = FormatNumber(intermediate);
+                firstNumber = intermediate;
+                state_Textbox.Text = $"{FormatNumber(intermediate)} {opSymbol} ";
                 awaitingSecond = true;
                 return;
             }
 
-            // "숫자 연산자" 상태(예: "12 - ")이면 연산자 교체는 필요 없으므로 무시
+            // 다른 상태(예: 빈 등)에서는 무시
         }
 
-        // '=' 버튼 핸들러: "a + b" 또는 "a - b" 계산 후 state에 " = 결과" 추가, result_Textbox에 결과만 표시
+        // '=' 버튼 핸들러: "a op b" 계산 후 state에 " = 결과" 추가, result_Textbox에 결과만 표시
         private void ResultButton_Click(object sender, EventArgs e)
         {
             // 이미 계산된 상태면 무시
@@ -138,35 +127,47 @@ namespace SimpleCalculator
                 return;
 
             var tokens = state_Textbox.Text.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            if (tokens.Length >= 3 && int.TryParse(tokens[0], out int left) && int.TryParse(tokens[2], out int right))
+            if (tokens.Length >= 3 && double.TryParse(tokens[0], out double left) && double.TryParse(tokens[2], out double right))
             {
                 string op = tokens[1];
-                if (op == "+")
-                {
-                    int sum = left + right;
-                    result_Textbox.Text = sum.ToString();
-                    state_Textbox.Text = $"{left} + {right} = {sum}";
-                }
-                else if (op == "-")
-                {
-                    int diff = left - right;
-                    result_Textbox.Text = diff.ToString();
-                    state_Textbox.Text = $"{left} - {right} = {diff}";
-                }
+                double res = Compute(left, right, op);
+                result_Textbox.Text = FormatNumber(res);
+                state_Textbox.Text = $"{FormatNumber(left)} {op} {FormatNumber(right)} = {FormatNumber(res)}";
                 firstNumber = null;
                 awaitingSecond = false;
             }
             else
             {
                 // 피연산자 부족인 경우: 현재 입력 숫자를 결과로 간주
-                if (int.TryParse(state_Textbox.Text.Trim(), out int single))
+                if (double.TryParse(state_Textbox.Text.Trim(), out double single))
                 {
-                    result_Textbox.Text = single.ToString();
-                    state_Textbox.Text = $"{single} = {single}";
+                    result_Textbox.Text = FormatNumber(single);
+                    state_Textbox.Text = $"{FormatNumber(single)} = {FormatNumber(single)}";
                     firstNumber = null;
                     awaitingSecond = false;
                 }
             }
+        }
+
+        // 실제 연산 수행 (double 지원, 나눗셈 0 처리)
+        private double Compute(double left, double right, string op)
+        {
+            return op switch
+            {
+                "+" => left + right,
+                "-" => left - right,
+                "x" or "X" or "*" => left * right,
+                "÷" or "/" => right == 0 ? double.NaN : left / right,
+                _ => right
+            };
+        }
+
+        // 결과 표시 포맷: 정수면 소수점 제거
+        private string FormatNumber(double v)
+        {
+            if (double.IsNaN(v)) return "NaN";
+            if (Math.Abs(v % 1) < 1e-12) return ((long)v).ToString();
+            return v.ToString();
         }
 
         private void pandm_btn_Click(object sender, EventArgs e)

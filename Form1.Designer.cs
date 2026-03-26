@@ -80,6 +80,7 @@
             CE_btn.TabIndex = 2;
             CE_btn.Text = "CE";
             CE_btn.UseVisualStyleBackColor = false;
+            
             // 
             // lblAPPName
             // 
@@ -102,6 +103,7 @@
             C_btn.TabIndex = 4;
             C_btn.Text = "C";
             C_btn.UseVisualStyleBackColor = false;
+            
             // 
             // button3
             // 
@@ -113,6 +115,7 @@
             button3.TabIndex = 5;
             button3.Text = "del";
             button3.UseVisualStyleBackColor = false;
+            
             // 
             // div_btn
             // 
@@ -125,6 +128,7 @@
             div_btn.TabIndex = 6;
             div_btn.Text = "÷";
             div_btn.UseVisualStyleBackColor = false;
+            
             // 
             // mul_btn
             // 
@@ -137,6 +141,7 @@
             mul_btn.TabIndex = 10;
             mul_btn.Text = "x";
             mul_btn.UseVisualStyleBackColor = false;
+            
             // 
             // btn9
             // 
@@ -150,6 +155,7 @@
             btn9.Text = "9";
             btn9.UseVisualStyleBackColor = false;
             btn9.Click += NumberButton_Click;
+            
             // 
             // btn8
             // 
@@ -163,6 +169,7 @@
             btn8.Text = "8";
             btn8.UseVisualStyleBackColor = false;
             btn8.Click += NumberButton_Click;
+           
             // 
             // btn7
             // 
@@ -176,6 +183,7 @@
             btn7.Text = "7";
             btn7.UseVisualStyleBackColor = false;
             btn7.Click += NumberButton_Click;
+            
             // 
             // minus_btn
             // 
@@ -189,6 +197,7 @@
             minus_btn.Text = "-";
             minus_btn.UseVisualStyleBackColor = false;
             minus_btn.Click += MinusButton_Click;
+            
             // 
             // btn6
             // 
@@ -202,6 +211,7 @@
             btn6.Text = "6";
             btn6.UseVisualStyleBackColor = false;
             btn6.Click += NumberButton_Click;
+            
             // 
             // btn5
             // 
@@ -215,6 +225,7 @@
             btn5.Text = "5";
             btn5.UseVisualStyleBackColor = false;
             btn5.Click += NumberButton_Click;
+       
             // 
             // btn4
             // 
@@ -228,6 +239,7 @@
             btn4.Text = "4";
             btn4.UseVisualStyleBackColor = false;
             btn4.Click += NumberButton_Click;
+            
             // 
             // plus_btn
             // 
@@ -241,6 +253,7 @@
             plus_btn.Text = "+";
             plus_btn.UseVisualStyleBackColor = false;
             plus_btn.Click += PlusButton_Click;
+            
             // 
             // btn3
             // 
@@ -254,6 +267,7 @@
             btn3.Text = "3";
             btn3.UseVisualStyleBackColor = false;
             btn3.Click += NumberButton_Click;
+            
             // 
             // btn2
             // 
@@ -267,6 +281,7 @@
             btn2.Text = "2";
             btn2.UseVisualStyleBackColor = false;
             btn2.Click += NumberButton_Click;
+            
             // 
             // btn1
             // 
@@ -280,6 +295,7 @@
             btn1.Text = "1";
             btn1.UseVisualStyleBackColor = false;
             btn1.Click += NumberButton_Click;
+            
             // 
             // result_btn
             // 
@@ -292,6 +308,7 @@
             result_btn.Text = "=";
             result_btn.UseVisualStyleBackColor = false;
             result_btn.Click += ResultButton_Click;
+            
             // 
             // button18
             // 
@@ -303,6 +320,7 @@
             button18.TabIndex = 21;
             button18.Text = ".";
             button18.UseVisualStyleBackColor = false;
+            
             // 
             // btn0
             // 
@@ -316,6 +334,7 @@
             btn0.Text = "0";
             btn0.UseVisualStyleBackColor = false;
             btn0.Click += NumberButton_Click;
+            
             // 
             // pandm_btn
             // 
@@ -328,6 +347,7 @@
             pandm_btn.Text = "+/-";
             pandm_btn.UseVisualStyleBackColor = false;
             pandm_btn.Click += pandm_btn_Click;
+            
             // 
             // Form1
             // 
