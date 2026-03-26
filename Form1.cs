@@ -5,7 +5,7 @@ namespace SimpleCalculator
 {
     public partial class Form1 : Form
     {
-        // 덧셈을 위한 상태 필드
+        // 덧셈을 위한 상태 필드 1차과제 완료
         private int? firstNumber = null;
         private bool awaitingSecond = false;
 

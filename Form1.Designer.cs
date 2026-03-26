@@ -3,7 +3,7 @@
     partial class Form1
     {
         /// <summary>
-        ///  Required designer variable.
+        ///  Required designer variable. 1차 과제 완료
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
@@ -22,7 +22,7 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
+        /// <summary> 
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
