@@ -1,6 +1,6 @@
 ﻿namespace SimpleCalculator
 {
-    partial class calc_Form
+    partial class Form1
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            state_Textbox = new TextBox();
+            result_Textbox = new TextBox();
             CE_btn = new Button();
             label = new Label();
             C_btn = new Button();
@@ -53,19 +53,21 @@
             pandm_btn = new Button();
             SuspendLayout();
             // 
-            // textBox1
+            // state_Textbox
             // 
-            textBox1.Location = new Point(56, 121);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(255, 23);
-            textBox1.TabIndex = 0;
+            state_Textbox.Font = new Font("굴림", 14.25F, FontStyle.Bold);
+            state_Textbox.Location = new Point(56, 121);
+            state_Textbox.Name = "state_Textbox";
+            state_Textbox.Size = new Size(255, 29);
+            state_Textbox.TabIndex = 0;
             // 
-            // textBox2
+            // result_Textbox
             // 
-            textBox2.Location = new Point(56, 156);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(255, 23);
-            textBox2.TabIndex = 1;
+            result_Textbox.Font = new Font("굴림", 14.25F, FontStyle.Bold);
+            result_Textbox.Location = new Point(56, 156);
+            result_Textbox.Name = "result_Textbox";
+            result_Textbox.Size = new Size(255, 29);
+            result_Textbox.TabIndex = 1;
             // 
             // CE_btn
             // 
@@ -147,6 +149,7 @@
             btn9.TabIndex = 9;
             btn9.Text = "9";
             btn9.UseVisualStyleBackColor = false;
+            btn9.Click += NumberButton_Click;
             // 
             // btn8
             // 
@@ -159,6 +162,7 @@
             btn8.TabIndex = 8;
             btn8.Text = "8";
             btn8.UseVisualStyleBackColor = false;
+            btn8.Click += NumberButton_Click;
             // 
             // btn7
             // 
@@ -171,6 +175,7 @@
             btn7.TabIndex = 7;
             btn7.Text = "7";
             btn7.UseVisualStyleBackColor = false;
+            btn7.Click += NumberButton_Click;
             // 
             // minus_btn
             // 
@@ -195,6 +200,7 @@
             btn6.TabIndex = 13;
             btn6.Text = "6";
             btn6.UseVisualStyleBackColor = false;
+            btn6.Click += NumberButton_Click;
             // 
             // btn5
             // 
@@ -207,6 +213,7 @@
             btn5.TabIndex = 12;
             btn5.Text = "5";
             btn5.UseVisualStyleBackColor = false;
+            btn5.Click += NumberButton_Click;
             // 
             // btn4
             // 
@@ -219,6 +226,7 @@
             btn4.TabIndex = 11;
             btn4.Text = "4";
             btn4.UseVisualStyleBackColor = false;
+            btn4.Click += NumberButton_Click;
             // 
             // plus_btn
             // 
@@ -243,6 +251,7 @@
             btn3.TabIndex = 17;
             btn3.Text = "3";
             btn3.UseVisualStyleBackColor = false;
+            btn3.Click += NumberButton_Click;
             // 
             // btn2
             // 
@@ -255,6 +264,7 @@
             btn2.TabIndex = 16;
             btn2.Text = "2";
             btn2.UseVisualStyleBackColor = false;
+            btn2.Click += NumberButton_Click;
             // 
             // btn1
             // 
@@ -267,6 +277,7 @@
             btn1.TabIndex = 15;
             btn1.Text = "1";
             btn1.UseVisualStyleBackColor = false;
+            btn1.Click += NumberButton_Click;
             // 
             // result_btn
             // 
@@ -301,6 +312,7 @@
             btn0.TabIndex = 20;
             btn0.Text = "0";
             btn0.UseVisualStyleBackColor = false;
+            btn0.Click += NumberButton_Click;
             // 
             // pandm_btn
             // 
@@ -313,7 +325,7 @@
             pandm_btn.Text = "+/-";
             pandm_btn.UseVisualStyleBackColor = false;
             // 
-            // calc_Form
+            // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -340,10 +352,10 @@
             Controls.Add(C_btn);
             Controls.Add(label);
             Controls.Add(CE_btn);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(result_Textbox);
+            Controls.Add(state_Textbox);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "calc_Form";
+            Name = "Form1";
             Text = "계산기";
             Load += calc_Form_Load;
             ResumeLayout(false);
@@ -352,8 +364,8 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox state_Textbox;
+        private TextBox result_Textbox;
         private Button CE_btn;
         private Label label;
         private Button C_btn;
