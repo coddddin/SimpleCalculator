@@ -31,7 +31,7 @@
             state_Textbox = new TextBox();
             result_Textbox = new TextBox();
             CE_btn = new Button();
-            label = new Label();
+            lblAPPName = new Label();
             C_btn = new Button();
             button3 = new Button();
             div_btn = new Button();
@@ -81,16 +81,16 @@
             CE_btn.Text = "CE";
             CE_btn.UseVisualStyleBackColor = false;
             // 
-            // label
+            // lblAPPName
             // 
-            label.AutoSize = true;
-            label.Font = new Font("한컴 고딕", 35.9999962F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            label.ForeColor = Color.Blue;
-            label.Location = new Point(51, 34);
-            label.Name = "label";
-            label.Size = new Size(265, 62);
-            label.TabIndex = 3;
-            label.Text = "간단 계산기";
+            lblAPPName.AutoSize = true;
+            lblAPPName.Font = new Font("한컴 고딕", 35.9999962F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            lblAPPName.ForeColor = Color.Blue;
+            lblAPPName.Location = new Point(51, 34);
+            lblAPPName.Name = "lblAPPName";
+            lblAPPName.Size = new Size(265, 62);
+            lblAPPName.TabIndex = 3;
+            lblAPPName.Text = "간단 계산기";
             // 
             // C_btn
             // 
@@ -350,7 +350,7 @@
             Controls.Add(div_btn);
             Controls.Add(button3);
             Controls.Add(C_btn);
-            Controls.Add(label);
+            Controls.Add(lblAPPName);
             Controls.Add(CE_btn);
             Controls.Add(result_Textbox);
             Controls.Add(state_Textbox);
@@ -367,7 +367,7 @@
         private TextBox state_Textbox;
         private TextBox result_Textbox;
         private Button CE_btn;
-        private Label label;
+        private Label lblAPPName;
         private Button C_btn;
         private Button button3;
         private Button div_btn;
