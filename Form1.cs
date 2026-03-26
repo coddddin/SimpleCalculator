@@ -1,10 +1,15 @@
 namespace SimpleCalculator
 {
-    public partial class Form1 : Form
+    public partial class calc_Form : Form
     {
-        public Form1()
+        public calc_Form()
         {
             InitializeComponent();
+        }
+
+        private void calc_Form_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
