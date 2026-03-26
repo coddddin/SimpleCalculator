@@ -51,32 +51,35 @@
             decimal_btn = new Button();
             btn0 = new Button();
             pandm_btn = new Button();
+            openParen_btn = new Button();
+            closeParen_btn = new Button();
             SuspendLayout();
             // 
             // state_Textbox
             // 
             state_Textbox.Font = new Font("굴림", 14.25F, FontStyle.Bold);
-            state_Textbox.Location = new Point(56, 121);
+            state_Textbox.Location = new Point(51, 79);
             state_Textbox.Name = "state_Textbox";
-            state_Textbox.Size = new Size(255, 29);
+            state_Textbox.Size = new Size(265, 29);
             state_Textbox.TabIndex = 0;
             // 
             // result_Textbox
             // 
             result_Textbox.Font = new Font("굴림", 14.25F, FontStyle.Bold);
-            result_Textbox.Location = new Point(56, 156);
+            result_Textbox.ForeColor = Color.FromArgb(192, 0, 0);
+            result_Textbox.Location = new Point(51, 114);
             result_Textbox.Name = "result_Textbox";
-            result_Textbox.Size = new Size(255, 29);
+            result_Textbox.Size = new Size(265, 29);
             result_Textbox.TabIndex = 1;
             // 
             // CE_btn
             // 
             CE_btn.BackColor = Color.FromArgb(192, 255, 255);
-            CE_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            CE_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             CE_btn.ForeColor = Color.Black;
-            CE_btn.Location = new Point(51, 193);
+            CE_btn.Location = new Point(51, 162);
             CE_btn.Name = "CE_btn";
-            CE_btn.Size = new Size(66, 42);
+            CE_btn.Size = new Size(91, 42);
             CE_btn.TabIndex = 2;
             CE_btn.Text = "CE";
             CE_btn.UseVisualStyleBackColor = false;
@@ -84,21 +87,21 @@
             // lblAPPName
             // 
             lblAPPName.AutoSize = true;
-            lblAPPName.Font = new Font("한컴 고딕", 35.9999962F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            lblAPPName.Font = new Font("Microsoft Sans Serif", 30F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAPPName.ForeColor = Color.Blue;
-            lblAPPName.Location = new Point(51, 34);
+            lblAPPName.Location = new Point(72, 18);
             lblAPPName.Name = "lblAPPName";
-            lblAPPName.Size = new Size(265, 62);
+            lblAPPName.Size = new Size(197, 46);
             lblAPPName.TabIndex = 3;
             lblAPPName.Text = "간단 계산기";
             // 
             // C_btn
             // 
             C_btn.BackColor = Color.FromArgb(192, 255, 255);
-            C_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            C_btn.Location = new Point(119, 193);
+            C_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            C_btn.Location = new Point(141, 162);
             C_btn.Name = "C_btn";
-            C_btn.Size = new Size(66, 42);
+            C_btn.Size = new Size(88, 42);
             C_btn.TabIndex = 4;
             C_btn.Text = "C";
             C_btn.UseVisualStyleBackColor = false;
@@ -107,10 +110,10 @@
             // del_btn
             // 
             del_btn.BackColor = Color.FromArgb(192, 255, 255);
-            del_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            del_btn.Location = new Point(185, 193);
+            del_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            del_btn.Location = new Point(228, 162);
             del_btn.Name = "del_btn";
-            del_btn.Size = new Size(66, 42);
+            del_btn.Size = new Size(88, 42);
             del_btn.TabIndex = 5;
             del_btn.Text = "del";
             del_btn.UseVisualStyleBackColor = false;
@@ -118,9 +121,9 @@
             // div_btn
             // 
             div_btn.BackColor = Color.OldLace;
-            div_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            div_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             div_btn.ForeColor = Color.Red;
-            div_btn.Location = new Point(250, 193);
+            div_btn.Location = new Point(250, 205);
             div_btn.Name = "div_btn";
             div_btn.Size = new Size(66, 42);
             div_btn.TabIndex = 6;
@@ -131,9 +134,9 @@
             // mul_btn
             // 
             mul_btn.BackColor = Color.OldLace;
-            mul_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            mul_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             mul_btn.ForeColor = Color.Red;
-            mul_btn.Location = new Point(250, 234);
+            mul_btn.Location = new Point(250, 246);
             mul_btn.Name = "mul_btn";
             mul_btn.Size = new Size(66, 42);
             mul_btn.TabIndex = 10;
@@ -144,9 +147,9 @@
             // btn9
             // 
             btn9.BackColor = Color.White;
-            btn9.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btn9.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn9.ForeColor = Color.Blue;
-            btn9.Location = new Point(185, 234);
+            btn9.Location = new Point(185, 246);
             btn9.Name = "btn9";
             btn9.Size = new Size(66, 42);
             btn9.TabIndex = 9;
@@ -157,9 +160,9 @@
             // btn8
             // 
             btn8.BackColor = Color.White;
-            btn8.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btn8.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn8.ForeColor = Color.Blue;
-            btn8.Location = new Point(119, 234);
+            btn8.Location = new Point(119, 246);
             btn8.Name = "btn8";
             btn8.Size = new Size(66, 42);
             btn8.TabIndex = 8;
@@ -170,9 +173,9 @@
             // btn7
             // 
             btn7.BackColor = Color.White;
-            btn7.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btn7.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn7.ForeColor = Color.Blue;
-            btn7.Location = new Point(51, 234);
+            btn7.Location = new Point(51, 246);
             btn7.Name = "btn7";
             btn7.Size = new Size(66, 42);
             btn7.TabIndex = 7;
@@ -183,9 +186,9 @@
             // minus_btn
             // 
             minus_btn.BackColor = Color.OldLace;
-            minus_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            minus_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             minus_btn.ForeColor = Color.Red;
-            minus_btn.Location = new Point(250, 275);
+            minus_btn.Location = new Point(250, 287);
             minus_btn.Name = "minus_btn";
             minus_btn.Size = new Size(66, 42);
             minus_btn.TabIndex = 14;
@@ -196,9 +199,9 @@
             // btn6
             // 
             btn6.BackColor = Color.White;
-            btn6.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btn6.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn6.ForeColor = Color.Blue;
-            btn6.Location = new Point(185, 275);
+            btn6.Location = new Point(185, 287);
             btn6.Name = "btn6";
             btn6.Size = new Size(66, 42);
             btn6.TabIndex = 13;
@@ -209,9 +212,9 @@
             // btn5
             // 
             btn5.BackColor = Color.White;
-            btn5.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btn5.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn5.ForeColor = Color.Blue;
-            btn5.Location = new Point(119, 275);
+            btn5.Location = new Point(119, 287);
             btn5.Name = "btn5";
             btn5.Size = new Size(66, 42);
             btn5.TabIndex = 12;
@@ -222,9 +225,9 @@
             // btn4
             // 
             btn4.BackColor = Color.White;
-            btn4.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btn4.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn4.ForeColor = Color.Blue;
-            btn4.Location = new Point(51, 275);
+            btn4.Location = new Point(51, 287);
             btn4.Name = "btn4";
             btn4.Size = new Size(66, 42);
             btn4.TabIndex = 11;
@@ -235,9 +238,9 @@
             // plus_btn
             // 
             plus_btn.BackColor = Color.OldLace;
-            plus_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            plus_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             plus_btn.ForeColor = Color.Red;
-            plus_btn.Location = new Point(250, 316);
+            plus_btn.Location = new Point(250, 328);
             plus_btn.Name = "plus_btn";
             plus_btn.Size = new Size(66, 42);
             plus_btn.TabIndex = 18;
@@ -248,9 +251,9 @@
             // btn3
             // 
             btn3.BackColor = Color.White;
-            btn3.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btn3.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn3.ForeColor = Color.Blue;
-            btn3.Location = new Point(185, 316);
+            btn3.Location = new Point(185, 328);
             btn3.Name = "btn3";
             btn3.Size = new Size(66, 42);
             btn3.TabIndex = 17;
@@ -261,9 +264,9 @@
             // btn2
             // 
             btn2.BackColor = Color.White;
-            btn2.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btn2.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn2.ForeColor = Color.Blue;
-            btn2.Location = new Point(119, 316);
+            btn2.Location = new Point(119, 328);
             btn2.Name = "btn2";
             btn2.Size = new Size(66, 42);
             btn2.TabIndex = 16;
@@ -274,9 +277,9 @@
             // btn1
             // 
             btn1.BackColor = Color.White;
-            btn1.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btn1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn1.ForeColor = Color.Blue;
-            btn1.Location = new Point(51, 316);
+            btn1.Location = new Point(51, 328);
             btn1.Name = "btn1";
             btn1.Size = new Size(66, 42);
             btn1.TabIndex = 15;
@@ -287,8 +290,8 @@
             // result_btn
             // 
             result_btn.BackColor = Color.OldLace;
-            result_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            result_btn.Location = new Point(250, 357);
+            result_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            result_btn.Location = new Point(250, 369);
             result_btn.Name = "result_btn";
             result_btn.Size = new Size(66, 42);
             result_btn.TabIndex = 22;
@@ -299,8 +302,8 @@
             // decimal_btn
             // 
             decimal_btn.BackColor = Color.White;
-            decimal_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            decimal_btn.Location = new Point(185, 357);
+            decimal_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            decimal_btn.Location = new Point(185, 369);
             decimal_btn.Name = "decimal_btn";
             decimal_btn.Size = new Size(66, 42);
             decimal_btn.TabIndex = 21;
@@ -310,9 +313,9 @@
             // btn0
             // 
             btn0.BackColor = Color.White;
-            btn0.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btn0.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn0.ForeColor = Color.Blue;
-            btn0.Location = new Point(119, 357);
+            btn0.Location = new Point(119, 369);
             btn0.Name = "btn0";
             btn0.Size = new Size(66, 42);
             btn0.TabIndex = 20;
@@ -323,8 +326,8 @@
             // pandm_btn
             // 
             pandm_btn.BackColor = Color.White;
-            pandm_btn.Font = new Font("한컴 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            pandm_btn.Location = new Point(51, 357);
+            pandm_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            pandm_btn.Location = new Point(51, 369);
             pandm_btn.Name = "pandm_btn";
             pandm_btn.Size = new Size(66, 42);
             pandm_btn.TabIndex = 19;
@@ -332,12 +335,40 @@
             pandm_btn.UseVisualStyleBackColor = false;
             pandm_btn.Click += pandm_btn_Click;
             // 
+            // openParen_btn
+            // 
+            openParen_btn.BackColor = Color.White;
+            openParen_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            openParen_btn.ForeColor = Color.Black;
+            openParen_btn.Location = new Point(51, 204);
+            openParen_btn.Name = "openParen_btn";
+            openParen_btn.Size = new Size(100, 42);
+            openParen_btn.TabIndex = 23;
+            openParen_btn.Text = "(";
+            openParen_btn.UseVisualStyleBackColor = false;
+            openParen_btn.Click += OpenParenButton_Click;
+            // 
+            // closeParen_btn
+            // 
+            closeParen_btn.BackColor = Color.White;
+            closeParen_btn.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            closeParen_btn.ForeColor = Color.Black;
+            closeParen_btn.Location = new Point(151, 204);
+            closeParen_btn.Name = "closeParen_btn";
+            closeParen_btn.Size = new Size(100, 42);
+            closeParen_btn.TabIndex = 24;
+            closeParen_btn.Text = ")";
+            closeParen_btn.UseVisualStyleBackColor = false;
+            closeParen_btn.Click += CloseParenButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(375, 434);
+            Controls.Add(closeParen_btn);
+            Controls.Add(openParen_btn);
             Controls.Add(result_btn);
             Controls.Add(decimal_btn);
             Controls.Add(btn0);
@@ -394,5 +425,7 @@
         private Button decimal_btn;
         private Button btn0;
         private Button pandm_btn;
+        private Button openParen_btn;
+        private Button closeParen_btn;
     }
 }
