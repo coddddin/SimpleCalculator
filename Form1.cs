@@ -24,6 +24,10 @@ namespace SimpleCalculator
             C_btn.Click += C_btn_Click;             // 전체 초기화
             CE_btn.Click += CE_btn_Click;           // 마지막 피연산자 삭제
             del_btn.Click += DeleteButton_Click;    // 문자(한 글자) 삭제 (Del)
+
+            // 소수점 버튼 연결 (디자이너에서 decimal_btn로 선언됨)
+            decimal_btn.Click += DotButton_Click;
+            // pandm 버튼은 디자이너에서 이미 pandm_btn_Click으로 연결되어 있음
         }
 
         private void calc_Form_Load(object sender, EventArgs e)
@@ -231,7 +235,7 @@ namespace SimpleCalculator
 
             if (text.Contains(" = "))
             {
-                // 결과가 있는 상태에서는 아무 동작하지 않음(원하면 전체 초기화로 변경 가능)
+                // 결과가 있는 상태에서는 아무 동작하지 않음
                 return;
             }
 
@@ -244,7 +248,6 @@ namespace SimpleCalculator
             {
                 state_Textbox.Text = text.Substring(0, text.Length - 1);
                 // 만약 삭제로 인해 피연산자 부분이 완전히 없어지면 awaitingSecond 상태는 유지(연산자 뒤) 또는 복원
-                // 간단히: if now ends with operator+space, keep awaitingSecond true; else set false when no operator
                 var trimmed = state_Textbox.Text.TrimEnd();
                 var tokens = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (tokens.Length >= 2 && (tokens[^1] == "+" || tokens[^1] == "-" || tokens[^1] == "x" || tokens[^1] == "÷"))
@@ -259,9 +262,95 @@ namespace SimpleCalculator
             // else: 마지막 문자가 공백 또는 연산자일 경우 Del은 아무 동작 안 함
         }
 
+        // 소수점 버튼: 현재 피연산자에 소수점 추가 (중복 허용하지 않음)
+        private void DotButton_Click(object sender, EventArgs e)
+        {
+            var text = state_Textbox.Text ?? string.Empty;
+
+            // 완료된 식이면 새로 시작
+            if (text.Contains(" = "))
+            {
+                state_Textbox.Text = string.Empty;
+                result_Textbox.Text = string.Empty;
+                firstNumber = null;
+                awaitingSecond = false;
+            }
+
+            // 마지막 토큰(피연산자) 획득
+            var tokens = state_Textbox.Text.TrimEnd().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            string lastToken = tokens.Length > 0 ? tokens[^1] : string.Empty;
+
+            // 연산자 뒤에서 새 피연산자 시작하려는 경우 (state ends with operator + space)
+            if (state_Textbox.Text.EndsWith(" "))
+            {
+                state_Textbox.Text += "0.";
+                awaitingSecond = false;
+                return;
+            }
+
+            // 빈 상태: "0."
+            if (string.IsNullOrEmpty(lastToken))
+            {
+                state_Textbox.Text = "0.";
+                return;
+            }
+
+            // 마지막 토큰이 숫자(또는 숫자+소수점)이고 이미 '.' 포함되어 있지 않으면 추가
+            if (double.TryParse(lastToken, out _) || lastToken.Contains("."))
+            {
+                if (!lastToken.Contains("."))
+                {
+                    state_Textbox.Text += ".";
+                }
+                // 이미 소수점이 있으면 아무 동작 안 함
+                return;
+            }
+
+            // 그 외의 경우(예: 마지막 토큰이 연산자) 새 피연산자로 "0."
+            state_Textbox.Text += "0.";
+        }
+
+        // +/- 버튼: 현재 피연산자(혹은 결과)의 부호 토글
         private void pandm_btn_Click(object sender, EventArgs e)
         {
+            var text = state_Textbox.Text ?? string.Empty;
 
+            // 완료된 식이면 결과값의 부호 토글 (결과를 좌항으로 사용)
+            if (text.Contains(" = "))
+            {
+                if (double.TryParse(result_Textbox.Text, out double r))
+                {
+                    double neg = -r;
+                    result_Textbox.Text = FormatNumber(neg);
+                    state_Textbox.Text = FormatNumber(neg);
+                    firstNumber = neg;
+                    awaitingSecond = false;
+                }
+                return;
+            }
+
+            var tokens = text.TrimEnd().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length == 0)
+                return;
+
+            string last = tokens[^1];
+
+            // 마지막 토큰이 숫자(피연산자)면 그 값 부호 토글
+            if (double.TryParse(last, out double val))
+            {
+                double neg = -val;
+                tokens[^1] = FormatNumber(neg);
+                state_Textbox.Text = string.Join(" ", tokens) + (text.EndsWith(" ") ? " " : "");
+                // 상태 보정: 만약 연산자+space 뒤에 있던 피연산자였다면 awaitingSecond = false (입력중)
+                if (tokens.Length >= 2 && (tokens[^2] == "+" || tokens[^2] == "-" || tokens[^2] == "x" || tokens[^2] == "÷"))
+                    awaitingSecond = false;
+                else
+                    awaitingSecond = false;
+            }
+            else
+            {
+                // 마지막 토큰이 숫자가 아니면 무시
+            }
         }
     }
 }
